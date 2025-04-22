@@ -5,9 +5,11 @@ import { OfertasComponent } from './Page/ofertas/ofertas.component';
 import { ContactosComponent } from './Page/contactos/contactos.component';
 
 export const routes: Routes = [
-    {path: "Inicio", component: InicioComponent},
-    {path: "Productos", component: ProductosComponent},
-    {path: "Ofertas", component: OfertasComponent},
-    {path: "Contactos", component: ContactosComponent},
-    {path: "", component: InicioComponent}
+
+    {path: "inicio", component: InicioComponent},
+    {path: "productos", component: ProductosComponent},
+    {path: "ofertas", component: OfertasComponent},
+    {path: "contactos", component: ContactosComponent},
+    {path: "", redirectTo: "inicio", pathMatch: "full"},
+    {path: "**", redirectTo: "inicio"}
 ];
