@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { Producto } from '../../Modelos/producto.model';
+import { CarritoService } from '../../servicio/carrito.service';
 
 @Component({
   selector: 'app-ofertas',
@@ -12,7 +13,7 @@ import { Producto } from '../../Modelos/producto.model';
 export class OfertasComponent {
   Productos: Producto[]= [
     {
-      id: "1",
+      id: 1,
       descripcion: "La mejor sandia de la patagonia",
       nombre: "Sandia",
       precio: 800,
@@ -21,7 +22,7 @@ export class OfertasComponent {
       cantidad: 20
     },
     {
-      id: "2",
+      id: 2,
       descripcion: "La mejor mandarina de la region",
       nombre: "Mandarina",
       precio: 500,
@@ -30,7 +31,7 @@ export class OfertasComponent {
       cantidad: 20
     },
     {
-      id: "3",
+      id: 3,
       descripcion: "El mejor pomelo de la ciudad",
       nombre: "Pomelo",
       precio: 800,
@@ -39,7 +40,7 @@ export class OfertasComponent {
       cantidad: 20
     },
     {
-      id: "4",
+      id: 4,
       descripcion: "El mejor kiwi del mundo",
       nombre: "Kiwi",
       precio: 1000,
@@ -48,7 +49,7 @@ export class OfertasComponent {
       cantidad: 10
     },
     {
-      id: "5",
+      id: 5,
       descripcion: "La mejor naranja del mundo",
       nombre: "Naranja",
       precio: 300,
@@ -57,4 +58,16 @@ export class OfertasComponent {
       cantidad: 10
     }
   ];
+  // Constructor donde inyectamos el servicio del carrito
+  constructor(private carritoService: CarritoService) {}
+  
+  // Método para agregar un producto al carrito
+  agregar(producto: Producto) {
+    // Llama al método del servicio para agregar el producto al carrito
+    this.carritoService.agregarAlCarrito(producto);
+  
+    // Muestra un mensaje de confirmación al usuario
+    alert('Producto agregado al carrito');
 }
+}
+

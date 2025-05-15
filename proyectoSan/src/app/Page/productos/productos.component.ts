@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterModule} from '@angular/router';
 import { Producto } from '../../Modelos/producto.model';
+import { CarritoService } from '../../servicio/carrito.service';
 
 
 @Component({
@@ -11,9 +12,20 @@ import { Producto } from '../../Modelos/producto.model';
   styleUrl: './productos.component.css'
 })
 export class ProductosComponent {
+   // Constructor donde inyectamos el servicio del carrito
+constructor(private carritoService: CarritoService) {}
+
+// Método para agregar un producto al carrito
+agregar(producto: Producto) {
+  // Llama al método del servicio para agregar el producto al carrito
+  this.carritoService.agregarAlCarrito(producto);
+
+  // Muestra un mensaje de confirmación al usuario
+  alert('Producto agregado al carrito');
+}
   Productos: Producto[]= [
     {
-      id: "1",
+      id: 1,
       descripcion: "La mejor manzana de la patagonia",
       nombre: "Manzana",
       precio: 300,
@@ -22,7 +34,7 @@ export class ProductosComponent {
       cantidad: 20
     },
     {
-      id: "2",
+      id: 2,
       descripcion: "La mejor banana de la region",
       nombre: "Banana",
       precio: 500,
@@ -31,7 +43,7 @@ export class ProductosComponent {
       cantidad: 20
     },
     {
-      id: "3",
+      id: 3,
       descripcion: "La mejor pera de la ciudad",
       nombre: "Pera",
       precio: 800,
@@ -40,7 +52,7 @@ export class ProductosComponent {
       cantidad: 20
     },
     {
-      id: "4",
+      id: 4,
       descripcion: "La mejor palta del mundo",
       nombre: "Palta",
       precio: 1000,
@@ -49,4 +61,5 @@ export class ProductosComponent {
       cantidad: 10
     }
   ];
+  
 }

@@ -9,7 +9,7 @@
         <p>{{productos.descripcion}}</p>
         <p>Precio: {{ productos.precio | currency}}</p>
         <p>Cantidad: {{productos.cantidad}}</p>
-        <button type="button" class="btn btn-outline-primary">Agregar al carrito</button>
+        <button type="button" class="btn btn-outline-primary" (click)="agregar(productos)">Agregar al carrito</button>
       </div>
     </ng-container>
   </ng-container>
